@@ -64,7 +64,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $project = Project::findOrFail($project->slug);
+     
         return view('admin.projects.edit', compact('project'));
 
     }
@@ -79,7 +79,6 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->all();
-        $project = Project::findOrFail($project->slug);
         $project->update($data);
         
         return redirect()->route('admin.projects.index');
