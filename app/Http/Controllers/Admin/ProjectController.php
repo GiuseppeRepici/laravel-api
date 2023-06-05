@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $project = new Project();
+        $project->fill($data);
+        $project->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -59,7 +64,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $project = Project::findOrFail($project->slug);
+        return view('admin.projects.edit', compact('project'));
+
     }
 
     /**
@@ -71,7 +78,11 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $data = $request->all();
+        $projects = Project::findOrFail($project->slug);
+        $projects->update($data);
+        
+        return redirect()->route('admin.projects.index');
     }
 
     /**
