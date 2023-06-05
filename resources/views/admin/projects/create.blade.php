@@ -7,15 +7,25 @@
         @csrf
         <div class="form-group">
             <label for="name">Nome</label>
-            <input type="text" name="name" class="form-control" id="name">
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="name" value="{{ old('name') }}">
+            @error('name')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="slug">Slug</label>
-            <input type="text" name="slug" class="form-control" id="slug">
+            <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug') }}">
+            @error('slug')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="description">descrizione</label>
-            <input type="text-area" name="description" class="form-control" id="description">
+            <input type="text-area" name="description" class="form-control" id="description" value="{{ old('description') }}">
         </div>
         
         <button class="btn btn-primary" type="submit">Invia</button>
