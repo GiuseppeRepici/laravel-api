@@ -79,8 +79,8 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $data = $request->all();
-        $projects = Project::findOrFail($project->slug);
-        $projects->update($data);
+        $project = Project::findOrFail($project->slug);
+        $project->update($data);
         
         return redirect()->route('admin.projects.index');
     }
