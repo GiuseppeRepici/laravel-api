@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreProjectRequest extends FormRequest
@@ -24,8 +25,7 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5|max:150',
-            'slug' => 'required',
+            'name' => ['required','min:5','max:150', Rule::unique('projects')],
             'description' => 'nullable'
         ];
     }
@@ -35,8 +35,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name.required' => 'Il nome è richiesto',
             'name.min' => 'Il nome deve essere lungo almeno :min caratteri',
-            'name.max' => 'Il nome non deve superare :max caratteri',
-            'slug.required' => 'Lo slug è richiesto'
+            'name.max' => 'Il nome non deve superare :max caratteri'
         ];
     }
 }

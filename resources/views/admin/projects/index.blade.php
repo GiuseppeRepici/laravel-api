@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <h1>La lista dei project</h1>
 
     <table class="table">
@@ -22,13 +29,13 @@
                         <a href="{{ route('admin.projects.show', $project->slug) }}" class="btn btn-success">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a href="{{ route('admin.projects.edit', $project->slug) }}">
+                        <a class="btn btn-warning" href="{{ route('admin.projects.edit', $project->slug) }}">
                             <i class="fa-solid fa-square-pen"></i>
                         </a>
-                        <form method="POST" action="{{ route('admin.projects.destroy', $project->slug) }}">
+                        <form class="d-inline-block" method="POST" action="{{ route('admin.projects.destroy', $project->slug) }}">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-danger mt-3" >
+                            <button type="submit" class="btn btn-danger" >
                                 <i class="fa-solid fa-trash"></i>
                             </button>
                         </form>

@@ -15,15 +15,6 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label for="slug">Slug</label>
-                <input type="text" name="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" value="{{ old('slug', $project->slug) }}" >
-                @error('slug')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
-                @enderror
-            </div>
-            <div class="form-group">
                 <label for="description">descrizione</label>
                 <input type="text-area" name="description" class="form-control" id="description" value="{{ old('description', $project->description) }}" >
             </div>
