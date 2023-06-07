@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
+ 
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
+
+
     <h1>La lista delle tipologie</h1>    
 
     <table class="table">
@@ -23,7 +31,7 @@
                         <a class="btn btn-warning" href="{{ route('admin.types.edit', $type->id) }}">
                             <i class="fa-solid fa-square-pen"></i>
                         </a>
-                        <form class="d-inline-block" method="POST" action="">
+                        <form class="d-inline-block" method="POST" action="{{ route('admin.types.destroy', $type->id) }}">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger" >

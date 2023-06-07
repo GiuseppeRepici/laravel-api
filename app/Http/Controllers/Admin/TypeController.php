@@ -93,6 +93,8 @@ class TypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $type = Type::findOrFail($id);
+        $type->delete();
+        return redirect()->route('admin.types.index')->with('message', "{$type->type} è stato cancellato");
     }
 }
