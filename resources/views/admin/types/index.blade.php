@@ -20,7 +20,7 @@
                         <a href="{{ route('admin.types.show', $type->id) }}" class="btn btn-success">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a class="btn btn-warning" href="">
+                        <a class="btn btn-warning" href="{{ route('admin.types.edit', $type->id) }}">
                             <i class="fa-solid fa-square-pen"></i>
                         </a>
                         <form class="d-inline-block" method="POST" action="">

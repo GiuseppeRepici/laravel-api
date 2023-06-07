@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -64,7 +65,8 @@ class TypeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $type = Type::findOrFail($id);
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -74,9 +76,13 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTypeRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $type = Type::findOrFail($id);
+        $type->update($data);
+        
+        return redirect()->route('admin.types.index')->with('message', "{$type->type} è stato modificato con successo");
     }
 
     /**
