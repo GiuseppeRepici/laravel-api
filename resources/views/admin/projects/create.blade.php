@@ -14,6 +14,15 @@
                     </div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="type">Tipologia</label>
+            <select class="form-select" id="type" name="type_id">
+                <option value=""></option>
+                @foreach ($types as $type)
+                    <option @selected(old('type_id') == $type->id) value="{{ $type->id }}">{{ $type->type }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="form-group">
             <label for="description">descrizione</label>
             <input type="text-area" name="description" class="form-control" id="description" value="{{ old('description') }}">
