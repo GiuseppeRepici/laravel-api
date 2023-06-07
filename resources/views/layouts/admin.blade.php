@@ -75,6 +75,18 @@
                                     <i class="fa-solid fa-plus"></i> Crea un project
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.types.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> Type
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.types.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.types.create') }}">
+                                    <i class="fa-solid fa-plus"></i> Crea una tipologia
+                                </a>
+                            </li>
                         </ul>
 
 
