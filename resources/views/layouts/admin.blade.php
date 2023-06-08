@@ -87,6 +87,12 @@
                                     <i class="fa-solid fa-plus"></i> Crea una tipologia
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.index' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-regular fa-folder-open"></i> Tecnologie
+                                </a>
+                            </li>
                         </ul>
 
 
