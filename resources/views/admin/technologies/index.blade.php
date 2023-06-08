@@ -26,7 +26,7 @@
                     <td>{{ $technology->name }}</td>
                     <td>{{ $technology->slug }}</td>
                     <td>
-                        <a href="" class="btn btn-success">
+                        <a href="{{ route('admin.technologies.show', $technology->id) }}" class="btn btn-success">
                             <i class="fa-solid fa-eye"></i>
                         </a>
                         <a class="btn btn-warning" href="">

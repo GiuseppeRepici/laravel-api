@@ -56,7 +56,8 @@ class TechnologyController extends Controller
      */
     public function show($id)
     {
-        //
+        $technology = Technology::findOrFail($id);
+        return view('admin.technologies.show', compact('technology'));
     }
 
     /**
