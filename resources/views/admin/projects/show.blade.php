@@ -13,4 +13,14 @@
             <span>Nessuna categoria</span>
         @endif
     </div>
+
+    <div class="mt-4">
+        <h5>Tecnologie: </h5>
+        @forelse ($project->technologies as $technology)
+            <span>{{ $technology->name }} {{ $loop->last ? '' : ',' }}</span>
+        @empty
+            <span>Nessun tag presente</span>
+        @endforelse
+
+    </div>
 @endsection
