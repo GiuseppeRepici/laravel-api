@@ -93,6 +93,12 @@
                                     <i class="fa-regular fa-folder-open"></i> Tecnologie
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.technologies.create' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.technologies.create') }}">
+                                    <i class="fa-solid fa-plus"></i> Crea una tecnologia
+                                </a>
+                            </li>
                         </ul>
 
 
