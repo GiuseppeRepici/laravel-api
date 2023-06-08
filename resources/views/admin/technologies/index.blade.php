@@ -29,10 +29,10 @@
                         <a href="{{ route('admin.technologies.show', $technology->id) }}" class="btn btn-success">
                             <i class="fa-solid fa-eye"></i>
                         </a>
-                        <a class="btn btn-warning" href="">
+                        <a class="btn btn-warning" href="{{ route('admin.technologies.edit', $technology->id) }}">
                             <i class="fa-solid fa-square-pen"></i>
                         </a>
-                        <form class="d-inline-block" method="POST" action="">
+                        <form class="d-inline-block" method="POST" action="{{ route('admin.technologies.destroy', $technology->id) }}">
                             @method('DELETE')
                             @csrf
                             <button type="submit" class="btn btn-danger" >

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTechnologyRequest;
+use App\Http\Requests\UpdateTechnologyRequest;
 use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -68,7 +69,8 @@ class TechnologyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $technology = Technology::findOrFail($id);
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
@@ -78,9 +80,14 @@ class TechnologyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTechnologyRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+        $data['slug'] = Str::slug($data['name']);
+        $technology = Technology::findOrFail($id);
+        $technology->update($data);
+        
+        return redirect()->route('admin.technologies.index')->with('message', "{$technology->name} è stato modificato con successo");
     }
 
     /**
@@ -91,6 +98,9 @@ class TechnologyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $technology = Technology::findOrFail($id);
+        $technology->delete();
+
+        return redirect()->route('admin.technologies.index')->with('message', "{$technology->name} è stato cancellato");
     }
 }
