@@ -19,7 +19,7 @@
         @forelse ($project->technologies as $technology)
             <span>{{ $technology->name }} {{ $loop->last ? '' : ',' }}</span>
         @empty
-            <span>Nessun tag presente</span>
+            <span>Nessuna tecnologia presente</span>
         @endforelse
 
     </div>
